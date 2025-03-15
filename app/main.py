@@ -1,7 +1,7 @@
 from flask import Flask, request, jsonify, render_template, send_file
 import joblib
 import os
-from utils import load_data, filter_doctors_by_time, prepare_features, save_predictions
+from app.utils import load_data, filter_doctors_by_time, prepare_features, save_predictions
 
 app = Flask(__name__, static_folder='../static', template_folder='../templates')
 
