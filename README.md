@@ -30,4 +30,4 @@ given the details about the Doctors along with their survey data through the dat
 
 ## Deployment
 
-[Public URL from Railway app](doctor-survey-predictor-production.up.railway.app)
+[Public URL from Railway app](https://doctor-survey-predictor-production.up.railway.app)
