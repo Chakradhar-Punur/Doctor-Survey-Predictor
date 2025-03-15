@@ -1,7 +1,7 @@
 function predict() {
     let time = document.getElementById("timeInput").value;
 
-    fetch("/predict", {
+    fetch("https://doctor-survey-predictor-production.up.railway.app//predict", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ time: time })
