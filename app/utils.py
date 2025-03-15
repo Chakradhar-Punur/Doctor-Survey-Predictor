@@ -1,8 +1,17 @@
-import pandas as pd
 import os
+import pandas as pd
 
-def load_data(file_path="/Users/Chakradhar/doctor_survey_app/models/preprocessed_data.csv"):
-    return pd.read_csv(file_path)
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))  # Gets the directory of utils.py
+DATA_PATH = os.path.join(BASE_DIR, "../models/preprocessed_data.csv")
+
+def load_data():
+    try:
+        df = pd.read_csv(DATA_PATH)
+        print(f"Loaded dataset from: {DATA_PATH}")
+        return df
+    except FileNotFoundError:
+        print(f"Dataset not found at: {DATA_PATH}")
+        raise
 
 def filter_doctors_by_time(df, user_time):
     # Filters doctors based on the given hour.

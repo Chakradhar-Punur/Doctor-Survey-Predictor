@@ -5,7 +5,6 @@ from app.utils import load_data, filter_doctors_by_time, prepare_features, save_
 
 app = Flask(__name__, static_folder='../static', template_folder='../templates')
 
-# Get the correct directory dynamically
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))  # Gets the directory of main.py
 MODEL_PATH = os.path.join(BASE_DIR, "../models/doctor_model.pkl")
 
@@ -16,7 +15,6 @@ try:
 except FileNotFoundError:
     print(f"Model file not found at: {MODEL_PATH}")
     raise
-
 
 df = load_data()
 
