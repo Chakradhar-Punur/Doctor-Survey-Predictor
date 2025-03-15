@@ -22,7 +22,13 @@ def prepare_features(df_filtered):
     return df_filtered[["Hour", "Session Duration", "Count of Survey Attempts"]]
 
 def save_predictions(df_filtered):
-    # Saves predictions to a CSV file and returns the filename.
-    result_file = os.path.join("/Users/Chakradhar/doctor_survey_app/app/", "predicted_doctors.csv")
+    # Ensure the 'outputs' directory exists
+    output_dir = os.path.join(os.getcwd(), "outputs")  
+    os.makedirs(output_dir, exist_ok=True)  # Create directory if it doesn't exist
+
+    # Save the CSV file in the correct directory
+    result_file = os.path.join(output_dir, "predicted_doctors.csv")
     df_filtered.to_csv(result_file, index=False)
+
+    print(f"File saved at: {result_file}")
     return result_file
