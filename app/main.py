@@ -5,8 +5,18 @@ from app.utils import load_data, filter_doctors_by_time, prepare_features, save_
 
 app = Flask(__name__, static_folder='../static', template_folder='../templates')
 
-# Load the trained model
-model = joblib.load("/Users/Chakradhar/doctor_survey_app/models/doctor_model.pkl")
+# Get the correct directory dynamically
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))  # Gets the directory of main.py
+MODEL_PATH = os.path.join(BASE_DIR, "../models/doctor_model.pkl")
+
+# Load model
+try:
+    model = joblib.load(MODEL_PATH)
+    print(f"Model loaded from: {MODEL_PATH}")
+except FileNotFoundError:
+    print(f"Model file not found at: {MODEL_PATH}")
+    raise
+
 
 df = load_data()
 
